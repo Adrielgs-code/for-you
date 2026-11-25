@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Laura 🌿</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#fcfaf7',
+                        cardbg: '#f5f0eb',
+                        sage: '#8a9a86',
+                        sagedark: '#5e6d5a',
+                        terracotta: '#d98a6c',
+                        ink: '#363330',
+                        inklight: '#6e6963',
+                        softborder: '#e4ded7'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f7f3ee;
+            color: #363330;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#e4ded7 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
+        }
+
+        /* Interactive Envelope Flip Effect */
+        .envelope-wrapper {
+            perspective: 1000px;
+        }
+
+        .envelope {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .envelope.open {
+            transform: rotateY(180deg);
+        }
+
+        .envelope-front, .envelope-back {
+            backface-visibility: hidden;
+        }
+
+        .envelope-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Subtle Heart Float */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .float-gentle {
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center px-4 py-8 md:py-12 selection:bg-terracotta/20 selection:text-terracotta">
+
+    <!-- Header Sederhana -->
+    <header class="text-center max-w-md mx-auto mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sage/30 bg-sage/10 text-sagedark text-xs tracking-wide mb-3 font-medium">
+            <span class="w-2 h-2 rounded-full bg-sage animate-pulse"></span>
+            <span>Selamat Pagi, Lalat Lamongan Kesayangan Aku ✨</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-4xl text-ink font-semibold tracking-tight">
+            Sebuah Catatan Kecil Hari Ini
+        </h1>
+        <p id="liveDate" class="text-xs text-inklight mt-1 font-serif italic">
+            Kamis Pagi
+        </p>
+    </header>
+
+    <!-- Main Content: Envelope / Interactive Card -->
+    <main class="w-full max-w-xl mx-auto my-auto">
+        <div class="envelope-wrapper w-full">
+            <div id="envelopeCard" class="envelope relative bg-cardbg rounded-2xl border border-softborder shadow-sm hover:shadow-md transition-shadow p-6 md:p-8">
+                
+                <!-- Front Side (Surat Tertutup) -->
+                <div id="cardClosedState" class="text-center py-8 px-4 flex flex-col items-center justify-center">
+                    <div class="w-16 h-16 rounded-full bg-paper border border-softborder flex items-center justify-center text-terracotta text-xl mb-4 shadow-sm float-gentle">
+                        <i class="fa-regular fa-envelope-open"></i>
+                    </div>
+                    <h2 class="font-serif text-2xl text-ink font-medium mb-2">Ada pesan khusus buat kamu</h2>
+                    <p class="text-xs text-inklight max-w-xs leading-relaxed mb-6">
+                        Sebelum berangkat sekolah atau mulai ujian, buka bentar surat ini ya...
+                    </p>
+                    <button onclick="toggleEnvelope()" class="px-6 py-2.5 rounded-full bg-sage hover:bg-sagedark text-paper text-xs font-medium tracking-wide transition-all shadow-sm active:scale-95 flex items-center gap-2">
+                        <span>Buka Surat</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+
+                <!-- Open State (Isi Surat) -->
+                <div id="cardOpenState" class="hidden space-y-5 text-ink">
+                    <div class="flex items-center justify-between border-b border-softborder/60 pb-3">
+                        <span class="text-xs font-serif italic text-sage tracking-wide">Untuk Lalat Lamongan Kesayangan Aku 🌿</span>
+                        <button onclick="toggleEnvelope()" class="text-inklight/60 hover:text-ink text-xs transition">
+                            <i class="fa-solid fa-compress"></i> Tutup
+                        </button>
+                    </div>
+
+                    <!-- Isi Surat Natural & Filosofis -->
+                    <div class="font-serif text-base md:text-lg text-ink/90 leading-relaxed space-y-4 text-justify md:text-left">
+                        <p>
+                            Selamat pagi Lalat lamongan kesayangan aku.
+                        </p>
+                        <p>
+                            Pagi selalu punya cara sendiri buat menenangkan, seperti pengingat halus kalau setiap hari adalah kesempatan baru buat melangkah. Hari ini kamu kembali ke sekolah, dan kalaupun ada ujian yang menunggu, semoga pikiranmu tetap jernih dan tenang buat melewatinya.
+                        </p>
+                        <p>
+                            Semoga apa yang sudah kamu pelajari kemarin mengendap dengan baik dan mudah kamu ingat kembali. Semoga Tuhan memberkati usahamu, dan keberuntungan selalu berpihak pada hal-hal baik yang kamu kerjakan hari ini.
+                        </p>
+                        <p>
+                            Tetap jadi cantiknya aku seperti biasa ya—yang selalu berusaha yang terbaik dengan caranya sendiri. 
+                        </p>
+                        <p class="font-sans text-xs md:text-sm text-terracotta font-medium pt-2 italic">
+                            Jangan lupa kabarin aku kalau sudah di sekolah atau saat sempat nanti. Have a nice day!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-softborder/60 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="generateMicroAffirmation()" class="px-4 py-2 rounded-xl bg-paper border border-softborder text-xs text-inklight hover:text-ink hover:border-sage transition flex items-center gap-1.5 active:scale-95">
+                            <i class="fa-solid fa-sparkles text-terracotta"></i>
+                            <span>Semangat Hari Ini ✨</span>
+                        </button>
+
+                        <button onclick="sendWhatsAppReply()" class="px-5 py-2 rounded-xl bg-sage hover:bg-sagedark text-paper text-xs font-medium transition flex items-center gap-2 active:scale-95 shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Kabarin Aku 💌</span>
+                        </button>
+                    </div>
+
+                    <!-- Small Affirmation Output Box -->
+                    <div id="affirmationBox" class="hidden p-3 rounded-xl bg-paper/80 border border-sage/20 text-xs text-sagedark italic font-serif transition-all">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="text-center mt-8 text-[11px] text-inklight/60 font-serif">
+        <p>Disimpan khusus untuk Laura • Semoga ujiannya lancar</p>
+    </footer>
+
+    <script>
+        // Set Current Date
+        const dateOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('liveDate').textContent = new Date().toLocaleDateString('id-ID', dateOptions);
+
+        // Toggle Open/Close Letter
+        function toggleEnvelope() {
+            const closedState = document.getElementById('cardClosedState');
+            const openState = document.getElementById('cardOpenState');
+            
+            if (openState.classList.contains('hidden')) {
+                closedState.classList.add('hidden');
+                openState.classList.remove('hidden');
+            } else {
+                openState.classList.add('hidden');
+                closedState.classList.remove('hidden');
+            }
+        }
+
+        // Micro-Notes / Affirmations
+        const affirmations = [
+            "Tarik napas dalam-dalam. Satu demi satu soal pasti bisa kamu selesaikan.",
+            "Kamu sudah belajar, selebihnya biar ketenangan dan keberuntungan yang bekerja.",
+            "Semoga materi ujian yang keluar pas banget sama yang kamu ingat!",
+            "Jangan buru-buru, kerjakan dengan tenang. Doaku menyertaimu dari sini.",
+            "Apapun hasilnya nanti, kamu tetap cantiknya aku yang selalu bikin bangga."
+        ];
+
+        function generateMicroAffirmation() {
+            const box = document.getElementById('affirmationBox');
+            const randomIndex = Math.floor(Math.random() * affirmations.length);
+            box.textContent = `"${affirmations[randomIndex]}"`;
+            box.classList.remove('hidden');
+        }
+
+        // Direct WhatsApp Reply Link
+        function sendWhatsAppReply() {
+            const defaultText = "Pagi juga! Makasih ya ucapan semangatnya, ini aku mau siap-siap sekolah/ujian dulu. ❤️";
+            const encodedText = encodeURIComponent(defaultText);
+            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
